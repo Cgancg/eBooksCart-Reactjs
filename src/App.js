@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./AppRoutes";
+
+import { NavigationBar } from "./components/NavigationBar";
+import { SiteName } from "./components/SiteName";
+import { Home } from "./components/Home";
+// import { Cart } from "./components/Cart"
+
+export const App = () => {
+    const [show, setShow] = useState(true);
+    const [cart, setCart] = useState([]);
+
+    const handleClick = ({item}) => {
+      console.log(item);
+    };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <BrowserRouter>
+          <SiteName />
+          <NavigationBar size={cart.length}/>
+          <Home handleClick={handleClick}/>
+          <AppRoutes />
+          
+      {/* <Cart /> */}
+        </BrowserRouter>
+        
   );
 }
 
-export default App;
