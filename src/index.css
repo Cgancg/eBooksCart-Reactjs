@@ -121,7 +121,31 @@ section{
 }
 
 /* Cart styling */
+.nav-link-cart{
+  position: relative;
+}
+
 .cart-count{
   color: red;
-  float:top;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  position: absolute;
+  bottom:75%;
+  left:60%;
+  padding: 10px;
+  
+}
+/* Warning for Cart styling */
+.warning{
+  background-color:rgb(17, 1, 73);
+  font-size: 0.75rem;
+  font-family: cursive;
+  padding:5px;
+  border-radius: 5px;
+  height: 40px;
+  width:135px;
+  position:absolute;
+  right:0;
+  top:10%;
+  color:white;
 }

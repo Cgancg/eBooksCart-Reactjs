@@ -22,7 +22,7 @@ export const NavigationBar = ({size}) => {
             </Link>
             
             <Link to="/cart" className="nav-link-cart" id="CartId">
-               <i class="fa-solid fa-cart-shopping"></i>
+               <i class="fa-solid fa-cart-shopping fa-2xl"></i>
                <span className="cart-count">{size}</span>
             </Link>
           </Nav>
