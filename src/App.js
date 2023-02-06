@@ -9,6 +9,8 @@ import { SiteName } from "./components/SiteName";
 import { Home } from "./components/Home";
 import { Cart } from "./components/Cart";
 
+import { getDataFromLocalStorage } from "./Utils/getDataFromLocalStorage";
+
 export const App = () => {
     const [show, setShow] = useState(true); //hook to display corresponding Navlink
     const [cart, setCart] = useState([]); //hook for Cart state
@@ -30,7 +32,10 @@ export const App = () => {
             return;
           }
           // return;
-           setCart([...cart, item]);  //--->To add items to cart if not already present using forEach    
+           setCart([...cart, item]); //--->To add items to cart if not already present using forEach    
+           const cartFromLS = getDataFromLocalStorage("cart", []); 
+           console.log({cartFromLS});
+           console.log(cart);
     };
 
     const handleChange = (item, change) => {
@@ -65,5 +70,5 @@ export const App = () => {
         </BrowserRouter>
         
   );
-}
+};
 

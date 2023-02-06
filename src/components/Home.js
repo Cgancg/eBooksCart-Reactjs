@@ -15,4 +15,5 @@ export const Home = ({handleClick}) => {
 )
 };
 
-// <Banner title="Home" />
+
+//<Banner title="Home" />
