@@ -1,0 +1,25 @@
+Capstone Project
+Goal-The main goal of the capstone project is to apply the skills and knowledge acquired in to a real-world project.
+
+Project Criteria:
+----------------
+API to retrieve data in the application
+Contain multiple pages using react-router-dom
+Function-based components and React hooks
+React component library such as React Bootstrap, MUI, etc.
+
+Store data in local storage
+Manipulate the data in local storage, for instance delete an item stored in local storage
+Read from local storage
+
+Error handling, for instance when an API call fails, or a form is incomplete, etc.
+
+Github projects for project-planning tasks using high level tickets on a Kanban board
+Code pushed to GiHub
+Application must be deployed using GitHub pages, Vercel or any other deployment tools
+Repo must contain a README.md file with the following:
+Title
+Description
+Deployed URL
+Getting Started
+Screenshots (desktop and mobile)
