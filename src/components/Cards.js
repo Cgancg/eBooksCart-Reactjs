@@ -10,7 +10,7 @@ export const Cards =({item, handleClick}) => {
             <div className='details'>
                 <p>{title}</p>
                 <p>{author}</p>
-                <p>Price - £{price}</p>
+                <p className='price'>Price - £{price}</p>
                 <button onClick={()=>handleClick({item})}>Add to cart</button>
             </div>
         </div>

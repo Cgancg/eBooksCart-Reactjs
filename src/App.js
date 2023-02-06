@@ -10,7 +10,7 @@ import { Home } from "./components/Home";
 import { Cart } from "./components/Cart";
 
 export const App = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(true); //hook to display corresponding Navlink
     const [cart, setCart] = useState([]); //hook for Cart state
     const [warning, setWarning] = useState(false); //hook for warning
 
@@ -32,21 +32,36 @@ export const App = () => {
           // return;
            setCart([...cart, item]);  //--->To add items to cart if not already present using forEach    
     };
+
+    const handleChange = (item, change) => {
+                //console.log(item, change); ---> to verify the change performed in cart on the console
+          let cartCount = -1;
+          cart.forEach((data, index) => {
+            if (data.id === item.id)
+              cartCount = index;
+          });
+          const tempCartArr = cart;
+          tempCartArr[cartCount].amount += change;
+
+          if (tempCartArr[cartCount].amount === 0)
+          tempCartArr[cartCount].amount = 1;
+          setCart([...tempCartArr])
+    }
   
   return (
         <BrowserRouter>
           <SiteName />
-          <NavigationBar size={cart.length} />
-          <Home handleClick={handleClick} />
-          
-          <Cart /> 
-          
+          <NavigationBar size={cart.length} setShow={setShow} />
+          {
+            show ? <Home handleClick={handleClick} /> : <Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange} />
+          }
+      
           {
             warning && <div className='warning'>
               Item already in Cart !
               </div>
           }            
-           <AppRoutes />         
+          <AppRoutes />         
         </BrowserRouter>
         
   );

@@ -3,7 +3,7 @@ export const SiteName = () =>{
     
         <div className="SiteName">
         <header className="App-header">
-        e-booksCart
+        e-books-cart
         <p>Helping Little minds read</p>
         </header>
         </div>
