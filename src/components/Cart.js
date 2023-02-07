@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { getDataFromLocalStorage } from "../Utils/getDataFromLocalStorage";
 
-export const Cart = ({size, cart, setCart, handleChange}) => {
+
+export const Cart = ({cart, setCart, handleChange}) => {
   const [price, setPrice] = useState(0);
 
   const handlePrice = () =>{
@@ -10,15 +11,26 @@ export const Cart = ({size, cart, setCart, handleChange}) => {
       setPrice(amt);
   }
 
-  const handleRemove = (id) =>{
-    const cartFromLS = getDataFromLocalStorage("cart", []);
-    console.log(cartFromLS);
+  const handleSize = () => {
+      let cartSize = 0;
+      cart?.map((item) => (cartSize += item.amount))
+      return (cartSize);
+  }
+  // const cartItem = ({ item }) => {
+  //   const { setCart } = useApp();
+
+    const handleRemove = (id) =>{
+    
+    // console.log(cartFromLS);
     const arr = cart.filter((item) => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(arr));
     setCart(arr);
     console.log(arr);
+    const cartFromLS = getDataFromLocalStorage("cart", []);
+    console.log(cartFromLS);
     // handlePrice();
   }
+
 
   useEffect(()=>{
     handlePrice();
@@ -46,7 +58,7 @@ export const Cart = ({size, cart, setCart, handleChange}) => {
         ))
       }
         <div className='total'>
-        <span>Total Cost of {size} products : £{price.toFixed(2)}</span>
+        <span>Total Cost of {handleSize()} products : £{price.toFixed(2)}</span>
         </div>
 
       </article>

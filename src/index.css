@@ -55,6 +55,12 @@ p{
   background-color: #61dafb;
   padding: 20px;
 }
+.aboutUs, .aboutUs-header, .contactUs-header{
+  font-size: larger;
+  color: #61dafb;
+  align-items: center;
+  text-align: center;
+}
 #CartId
 { 
     float:right;

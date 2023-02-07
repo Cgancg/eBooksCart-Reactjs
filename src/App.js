@@ -3,6 +3,7 @@ import './App.css';
 
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./AppRoutes";
+import { AppProvider } from "./context/AppProvider";
 
 import { NavigationBar } from "./components/NavigationBar";
 import { SiteName } from "./components/SiteName";
@@ -10,6 +11,7 @@ import { Home } from "./components/Home";
 import { Cart } from "./components/Cart";
 
 import { getDataFromLocalStorage } from "./Utils/getDataFromLocalStorage";
+import { useApp } from "./context/AppProvider";
 
 export const App = () => {
     const [show, setShow] = useState(true); //hook to display corresponding Navlink
@@ -17,14 +19,17 @@ export const App = () => {
     const [warning, setWarning] = useState(false); //hook for warning
 
     const handleClick = ({item}) => {
-              // console.log(item);--->to verify button-onClick-handleclick returns book details
-          let iteminCart = false;
+              console.log(item);//--->to verify button-onClick-handleclick returns book details
+              localStorage.setItem("cart", JSON.stringify(item));
+              const cartFromLS = getDataFromLocalStorage("cart", []); 
+              console.log({cartFromLS});
+              let iteminCart = false;
           cart.forEach((product)=>{
             if (item.id === product.id)
               iteminCart = true;
           })
           if (iteminCart)
-          {
+          { 
             setWarning(true); //--->to issue warning if Item already present in cart
             setTimeout(()=>{
               setWarning(false); 
@@ -32,11 +37,8 @@ export const App = () => {
             return;
           }
           // return;
-           setCart([...cart, item]); //--->To add items to cart if not already present using forEach    
-           const cartFromLS = getDataFromLocalStorage("cart", []); 
-           console.log({cartFromLS});
-           console.log(cart);
-    };
+           setCart([...cart, item]);//--->To add items to cart if not already present using forEach
+      };
 
     const handleChange = (item, change) => {
                 //console.log(item, change); ---> to verify the change performed in cart on the console
@@ -53,12 +55,19 @@ export const App = () => {
           setCart([...tempCartArr])
     }
   
+    const handleSize = () => {
+      let cartSize = 0;
+      cart?.map((item) => (cartSize += item.amount))
+      return (cartSize);
+  }
+
   return (
+    <AppProvider>
         <BrowserRouter>
           <SiteName />
-          <NavigationBar size={cart.length} setShow={setShow} />
+          <NavigationBar handleSize={handleSize} setShow={setShow} />
           {
-            show ? <Home handleClick={handleClick} /> : <Cart size={cart.length} cart={cart} setCart={setCart} handleChange={handleChange} />
+            show ? <Home handleClick={handleClick} /> : <Cart cart={cart} setCart={setCart} handleChange={handleChange} />
           }
       
           {
@@ -68,7 +77,7 @@ export const App = () => {
           }            
           <AppRoutes />         
         </BrowserRouter>
-        
+        </AppProvider>  
   );
 };
 

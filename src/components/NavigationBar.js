@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const NavigationBar = ({size, setShow}) => {
+export const NavigationBar = ({handleSize, setShow}) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -23,7 +23,7 @@ export const NavigationBar = ({size, setShow}) => {
             
             <Link to="/cart" className="nav-link-cart" id="CartId" onClick={()=>setShow(false)}>
                <i class="fa-solid fa-cart-shopping fa-2xl"></i>
-               <span className="cart-count">{size}</span>
+               <span className="cart-count">{handleSize()}</span>
             </Link>
           </Nav>
         </Navbar.Collapse>
