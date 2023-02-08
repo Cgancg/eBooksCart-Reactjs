@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { getDataFromLocalStorage } from "../utils1/getDataFromLocalStorage";
+import { getDataFromLocalStorage } from "../utils/getDataFromLocalStorage";
 
 const AppContext = createContext();
 

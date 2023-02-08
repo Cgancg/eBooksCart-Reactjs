@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useApp } from "../context/AppProvider";
 import { list } from "../data";
 import { Cards } from "../components/Cards";
-import { getDataFromLocalStorage } from "../utils1/getDataFromLocalStorage";
+import { getDataFromLocalStorage } from "../utils/getDataFromLocalStorage";
 
 export const Home = () => {
   const { setCart } = useApp();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getDataFromLocalStorage } from "../utils1/getDataFromLocalStorage";
+import { getDataFromLocalStorage } from "../utils/getDataFromLocalStorage";
 
 export const Cart = ({ cart, setCart, handleChange }) => {
   const [price, setPrice] = useState(0);
